@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>대회 / 공모전 등록</title>
+  <style>
+    .box {
+      border: 3px solid black;
+      padding: 10px;
+      margin: 10px;
+    }
+    div {
+        background-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+    <div class="box">
+    <h3>공모전 등록</h3>
+    <input type="text" id="contestTitle" placeholder="공모전 제목 입력">
+    <button onclick="addContest()">등록</button>
+  </div>
+    <!-- 대회 입력 폼 -->
+  <div class="box">
+    <h3>대회 등록</h3>
+    <input type="text" id="competitionTitle" placeholder="대회 제목 입력">
+    <button onclick="addCompetition()">등록</button>
+  </div>
+
+  <!-- 대회 / 경모 영역 -->
+  <div class="box">
+    <h3>대회 / 경모</h3>
+    <ul id="competitionList"></ul>
+  </div>
+
+  <!-- 공모전 영역 -->
+  <div class="box">
+    <h3>공모전</h3>
+    <ul id="contestList"></ul>
+  </div>
+  <script>
+    function addCompetition() {
+      const input = document.getElementById("competitionTitle");
+      const title = input.value.trim();
+
+      if (title) {
+        const list = document.getElementById("competitionList");
+        const li = document.createElement("li");
+        li.textContent = title;
+        list.appendChild(li);
+        input.value = "";
+      } else {
+        alert("대회 제목을 입력해주세요.");
+      }
+    }
+
+    function addContest() {
+      const input = document.getElementById("contestTitle");
+      const title = input.value.trim();
+
+      if (title) {
+        const list = document.getElementById("contestList");
+        const li = document.createElement("li");
+        li.textContent = title;
+        list.appendChild(li);
+        input.value = "";
+      } else {
+        alert("공모전 제목을 입력해주세요.");
+      }
+    }
+  </script>
+
+</body>
+</html>

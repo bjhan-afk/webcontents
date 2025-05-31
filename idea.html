@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>학교 홈페이지</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  .section {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  /* 왼쪽 섹션 스타일 */
+  .left {
+    background-color: #f0f8ff;
+    border-right: 1px solid #ccc;
+  }
+  /* 오른쪽 섹션 스타일 */
+  .right {
+    background-color: #fff8dc;
+    border-left: 1px solid #ccc;
+  }
+  h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+  /* 게시판 스타일 */
+  .board {
+    margin-top: 20px;
+  }
+  .user-section {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .user-section h3 {
+    margin-top: 0;
+  }
+  textarea {
+    width: 100%;
+    height: 60px;
+    resize: vertical;
+  }
+  button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+<!-- 왼쪽: 아이디어 게시판 -->
+<div class="section left">
+  <h2>아이디어 게시판</h2>
+  <div class="user-section" id="idea-user1">
+    <h3>사용자</h3>
+    <textarea id="idea-input-1" placeholder="아이디어를 입력하세요..."></textarea>
+    <button onclick="addIdea('idea-list-1', 'idea-input-1')">등록</button>
+    <div id="idea-list-1" style="margin-top:10px;"></div>
+  </div>
+</div>
+<script>
+  // 아이디어 등록 함수
+  function addIdea(listId, inputId) {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+    const ideaText = input.value.trim();
+    if (ideaText !== "") {
+      const ideaDiv = document.createElement("div");
+      ideaDiv.style.border = "1px solid #999";
+      ideaDiv.style.padding = "8px";
+      ideaDiv.style.marginBottom = "8px";
+      ideaDiv.style.borderRadius = "4px";
+      ideaDiv.innerHTML = `<strong>아이디어:</strong> ${ideaText}`;
+      list.appendChild(ideaDiv);
+      input.value = "";
+    } else {
+      alert("아이디어를 입력하세요!");
+    }
+  }
+</script>
+
+</body>
+</html>

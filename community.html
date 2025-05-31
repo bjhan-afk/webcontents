@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>학교 홈페이지</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  .section {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  /* 왼쪽 섹션 스타일 */
+  .left {
+    background-color: #f0f8ff;
+    border-right: 1px solid #ccc;
+  }
+  /* 오른쪽 섹션 스타일 */
+  .right {
+    background-color: #fff8dc;
+    border-left: 1px solid #ccc;
+  }
+  h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+  /* 커뮤니티 게시글 */
+  .community-posts {
+    margin-top: 20px;
+  }
+  .post {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+  .post h4 {
+    margin: 0 0 5px 0;
+  }
+  .post p {
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<!-- 오른쪽: 커뮤니티 -->
+<div class="section right">
+  <h2>커뮤니티</h2>
+  <div class="post-creation">
+    <h3>게시글 작성</h3>
+    <input type="text" id="community-title" placeholder="제목" style="width:100%; padding:8px; margin-bottom:8px; border-radius:4px; border:1px solid #ccc;" />
+    <textarea id="community-content" placeholder="내용을 입력하세요..." style="width:100%; height:80px; resize:vertical; padding:8px; border-radius:4px; border:1px solid #ccc;"></textarea>
+    <button onclick="addPost()">게시글 등록</button>
+  </div>
+  <div class="community-posts" id="community-posts">
+    <!-- 게시글이 여기에 추가됩니다 -->
+  </div>
+</div>
+
+<script>
+  // 게시글 등록 함수
+  function addPost() {
+    const title = document.getElementById("community-title").value.trim();
+    const content = document.getElementById("community-content").value.trim();
+    if (title === "" || content === "") {
+      alert("제목과 내용을 모두 입력하세요!");
+      return;
+    }
+    const postDiv = document.createElement("div");
+    postDiv.className = "post";
+    postDiv.innerHTML = `<h4>${title}</h4><p>${content}</p>`;
+    document.getElementById("community-posts").appendChild(postDiv);
+    document.getElementById("community-title").value = "";
+    document.getElementById("community-content").value = "";
+  }
+</script>
+
+</body>
+</html>
